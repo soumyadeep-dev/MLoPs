@@ -95,7 +95,7 @@ jobs:
       ## 11. Upload artifacts (optional)
       ## ------------------------
       - name: Upload outputs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5.0.0
         with:
           name: ml-artifacts
           path: artifacts/
