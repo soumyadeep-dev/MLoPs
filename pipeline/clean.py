@@ -5,17 +5,17 @@ def clean_data(df):
     # Keep valid trip distances
     df = df[df['trip_distance'] > 0]
 
-    # Convert timestamps
+    # Convert timestamp columns
     df['pickup_datetime'] = pd.to_datetime(df['tpep_pickup_datetime'])
     df['dropoff_datetime'] = pd.to_datetime(df['tpep_dropoff_datetime'])
 
-    # Compute duration in minutes
+    # Compute duration (minutes)
     df['duration'] = (df['dropoff_datetime'] - df['pickup_datetime']).dt.total_seconds() / 60
 
     # Keep reasonable trips
     df = df[(df['duration'] > 1) & (df['duration'] < 60)]
 
-    # Select usable columns for model
+    # Use coordinates (2015 dataset)
     cleaned_df = df[[
         'trip_distance',
         'pickup_longitude',
@@ -37,4 +37,4 @@ if __name__ == "__main__":
     cleaned.to_csv("artifacts/cleaned_data.csv", index=False)
 
     print("✔ Clean step completed")
-    print(f"Rows after cleaning: {len(cleaned)}")
+    print("Rows after cleaning:", len(cleaned))
