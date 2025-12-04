@@ -1,3 +1,5 @@
+import pandas as pd
+import os
 from sklearn.linear_model import LinearRegression
 
 def train_model(train_df):
@@ -8,3 +10,15 @@ def train_model(train_df):
     model.fit(X_train, y_train)
 
     return model
+
+if __name__ == "__main__":
+    train_df = pd.read_csv("artifacts/train.csv")
+
+    model = train_model(train_df)
+
+    # Save using pickle
+    import pickle
+    with open("artifacts/model.pkl", "wb") as f:
+        pickle.dump(model, f)
+
+    print("✔ Train step completed")
