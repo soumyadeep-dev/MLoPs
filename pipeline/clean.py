@@ -6,4 +6,6 @@ def clean_data(df):
     df['duration'] = (df['dropoff_datetime'] - df['pickup_datetime']).dt.total_seconds() / 60
 
     df = df[(df['duration'] > 1) & (df['duration'] < 60)]
+    print("df")
+
     return df[['trip_distance','PULocationID','DOLocationID','duration']]

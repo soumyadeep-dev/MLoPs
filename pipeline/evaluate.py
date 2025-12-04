@@ -7,4 +7,5 @@ def evaluate_model(model, val_df):
 
     preds = model.predict(X_val)
     rmse = np.sqrt(mean_squared_error(y_val, preds))
+    print(f"Validation RMSE: {rmse}")
     return rmse
