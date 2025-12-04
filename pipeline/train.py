@@ -1,9 +1,15 @@
 import pandas as pd
-import os
+import pickle
 from sklearn.linear_model import LinearRegression
 
 def train_model(train_df):
-    X_train = train_df[['trip_distance']]
+    X_train = train_df[[
+        'trip_distance',
+        'pickup_longitude',
+        'pickup_latitude',
+        'dropoff_longitude',
+        'dropoff_latitude'
+    ]]
     y_train = train_df['duration']
 
     model = LinearRegression()
@@ -16,8 +22,6 @@ if __name__ == "__main__":
 
     model = train_model(train_df)
 
-    # Save using pickle
-    import pickle
     with open("artifacts/model.pkl", "wb") as f:
         pickle.dump(model, f)
 
