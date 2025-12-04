@@ -4,7 +4,13 @@ import numpy as np
 from sklearn.metrics import mean_squared_error
 
 def evaluate_model(model, val_df):
-    X_val = val_df[['trip_distance']]
+    X_val = val_df[[
+        'trip_distance',
+        'pickup_longitude',
+        'pickup_latitude',
+        'dropoff_longitude',
+        'dropoff_latitude'
+    ]]
     y_val = val_df['duration']
 
     preds = model.predict(X_val)
