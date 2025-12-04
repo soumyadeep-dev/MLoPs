@@ -53,24 +53,24 @@ jobs:
       # ------------------------
       # 6. Split Data Step
       # ------------------------
-      #- name: Split data
-      #  run: |
-      #    python pipeline/split.py
-#
+      - name: Split data
+        run: |
+          python pipeline/split.py
+
       ## ------------------------
       ## 7. Train Model Step
       ## ------------------------
-      #- name: Train model
-      #  run: |
-      #    python pipeline/train.py
-#
+      - name: Train model
+        run: |
+          python pipeline/train.py
+
       ## ------------------------
       ## 8. Evaluate Model Step
       ## ------------------------
-      #- name: Evaluate model
-      #  run: |
-      #    python pipeline/evaluate.py
-#
+      - name: Evaluate model
+        run: |
+          python pipeline/evaluate.py
+
       ## ------------------------
       ## 9. Log to MLflow
       ## ------------------------
